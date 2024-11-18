@@ -1,9 +1,9 @@
-import { Button } from '@/components/ui/button'
+import { Title } from '@/src/components/shared'
 
 export default function Home() {
   return (
     <div>
-      <Button variant={'outline'}>Button</Button>
+      <Title text="Какой то заголовок" size="2xl" />
     </div>
   )
 }
