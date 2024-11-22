@@ -23,8 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${nunito.variable}`}>
         <Header className="py-[42px] border-b border-[#EDEDED]" />
-        <main className="min-h-screen">
-          Home
+        <main className="min-h-screen pt-[42px]">
           {children}
         </main>
       </body>

@@ -7,7 +7,7 @@ interface Props {
 
 const Container: React.FC<Props> = ({ className, children }) => {
   return (
-    <div className={cn(className, 'mx-auto container px-[15px] flex')}>
+    <div className={cn(className, 'mx-auto container px-[15px]')}>
       {children}
     </div>
   )
