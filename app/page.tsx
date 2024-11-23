@@ -1,16 +1,15 @@
+import { TopBar } from '@/src/widgets/top-bar'
 import { Container } from '@components/shared/ui/container'
 import { Title } from '@components/shared/ui/title'
-import { Categories } from '@components/shared/ui/categories'
-import { SortPopup } from '@components/shared/ui/sort-popup'
+
 
 export default function Home() {
   return (
     <>
       <Container>
         <Title text="Все пиццы" size="2xl" className="mb-5" />
-        <Categories />
-        <SortPopup />
       </Container>
+      <TopBar className="sticky top-5 z-10 w-full pb-5" />
     </>
   )
 }
