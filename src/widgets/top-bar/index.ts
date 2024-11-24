@@ -1,1 +1,1 @@
-export * from './top-bar'
+export * from './ui/top-bar'
