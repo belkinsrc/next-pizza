@@ -1,7 +1,7 @@
 import { TopBar } from '@/src/widgets/top-bar'
-import { Container } from '@components/shared/ui/container'
-import { Title } from '@components/shared/ui/title'
-
+import { Container } from '@components/shared/ui'
+import { Title } from '@components/shared/ui'
+import { Filter } from '@components/features/filter'
 
 export default function Home() {
   return (
@@ -10,6 +10,9 @@ export default function Home() {
         <Title text="Все пиццы" size="2xl" className="mb-5" />
       </Container>
       <TopBar className="sticky top-5 z-10 w-full pb-5" />
+      <Container>
+        <Filter />
+      </Container>
     </>
   )
 }
