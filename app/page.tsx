@@ -10,7 +10,7 @@ export default function Home() {
         <Title text="Все пиццы" size="2xl" className="mb-5" />
       </Container>
       <TopBar className="sticky top-5 z-10 w-full pb-5" />
-      <Container>
+      <Container className="flex gap-12 pt-9">
         <Filter />
       </Container>
     </>
