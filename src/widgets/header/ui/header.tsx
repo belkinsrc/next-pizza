@@ -36,7 +36,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           <Input
             type="text"
             placeholder="Поиск пиццы..."
-            className="px-12 py-[14px] h-[50px] placeholder:text-[#C0C0C0] bg-[#F9F9F9] border-none"
+            className="px-12 py-[14px] h-[50px]"
           />
         </div>
         <div className="flex items-center gap-4">
