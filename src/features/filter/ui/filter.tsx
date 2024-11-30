@@ -10,8 +10,8 @@ interface FilterProps {
 
 const Filter: React.FC<FilterProps> = ({ className }) => {
   return (
-    <aside className={cn(className, 'basis-[244px] flex-grow-0')}>
-      <Title text="Фильтрация" size="lg" className="mb-[25px] text-[22px]" />
+    <aside className={cn(className, 'basis-[244px] flex-grow-0 flex-shrink-0')}>
+      <Title text="Фильтрация" size="xl" className="mb-[25px] text-[22px] font-bold" />
 
       <div className="flex flex-col gap-4 pb-[25px] mb-[25px] border-b-[1px] border-[#F6F6F6]">
         <FilterCheckbox text="Можно собирать" value="configurable" name="configurable" />
