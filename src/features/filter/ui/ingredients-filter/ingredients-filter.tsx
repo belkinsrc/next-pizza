@@ -30,7 +30,7 @@ function IngredientsFilter() {
 
   return (
     <div className="pb-[42px]">
-      <Title text="Ингредиенты:" size="md" className="mb-[15px] text-[16px] font-bold" />
+      <Title text="Ингредиенты:" size="lg" className="mb-[15px] text-[16px] font-bold" />
       {isAllVisible && <Input value={search} onChange={handleSearchInputChange} type="text" placeholder='Поиск...' className='mb-4 py-2 px-5' />}
       <div className="flex flex-col gap-4 mb-[21px] h-[224px] overflow-y-auto">
         {filtetedIngredients.slice(0, isAllVisible ? itemsCount : visibleItems).map((ingredient, i) => (
