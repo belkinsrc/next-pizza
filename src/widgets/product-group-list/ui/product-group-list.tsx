@@ -6,6 +6,7 @@ import { Title } from '@/src/shared/ui'
 import { Product } from '@/src/shared/models'
 import { ProductCard } from '@/src/entities/product-card'
 import { cn } from '@/src/shared/utils'
+import { useActiveCategory } from '@/src/shared/store'
 interface ProductGroupListProps {
   products: Product[]
   groupName: string
@@ -13,16 +14,29 @@ interface ProductGroupListProps {
 }
 
 function ProductGroupList({ products, groupName, className }: ProductGroupListProps) {
-  const intersectionRef = useRef(null)
+  const intersectionRef = useRef<HTMLElement>(null)
   const intersection = useIntersection(intersectionRef, {
     threshold: 0.4,
   })
+  const { setActiveCategory } = useActiveCategory.getState()
 
   useEffect(() => {
     if (intersection?.isIntersecting) {
-      console.log('Intersecting: ' + intersection.target.id)
+      setActiveCategory(intersection.target.id)
     }
   }, [intersection])
+
+  // useEffect(() => {
+  //   const unsubscribeActiveCategory = 
+  //     useActiveCategory.subscribe(({ activeCategory }) => {
+  //       if (activeCategory === groupName) {
+  //         intersectionRef.current?.scrollIntoView({ behavior: 'smooth' })
+  //       }
+  //     })
+  //   return () => {
+  //     unsubscribeActiveCategory()
+  //   }
+  // }, [])
 
   return (
     <section className={cn(className, 'grow')} ref={intersectionRef} id={groupName}>

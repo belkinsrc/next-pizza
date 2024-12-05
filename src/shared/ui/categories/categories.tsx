@@ -1,5 +1,8 @@
+'use client'
+
 import { cn } from '@/src/shared/utils/utils'
-import React from 'react'
+// import { useState, useEffect } from 'react'
+import { useActiveCategory } from '../../store'
 
 interface Props {
   className?: string
@@ -14,9 +17,10 @@ const categories = [
   'С курицей',
   'Ещё',
 ]
-const activeIndex = 0
 
 const Categories: React.FC<Props> = ({ className }) => {
+  const activeCategory = useActiveCategory((state) => state.activeCategory)
+
   return (
     <ul
       className={cn(
@@ -27,10 +31,10 @@ const Categories: React.FC<Props> = ({ className }) => {
       {categories.map((ctgry, i) => (
         <li key={i}>
           <a
-            href="#"
+            href={`/#${ctgry}`}
             className={cn(
               'inline-block font-medium py-[10px] px-[25px] rounded-[15px]',
-              i === activeIndex ? 'bg-white text-primary shadow-[0_4px_4px_0_rgba(0,0,0,0.05)] cursor-default pointer-events-none' : ''
+              ctgry === activeCategory ? 'bg-white text-primary shadow-[0_4px_4px_0_rgba(0,0,0,0.05)] cursor-default pointer-events-none' : ''
             )}
           >
             {ctgry}
