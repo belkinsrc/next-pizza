@@ -34,7 +34,9 @@ const Categories: React.FC<Props> = ({ className }) => {
             href={`/#${ctgry}`}
             className={cn(
               'inline-block font-medium py-[10px] px-[25px] rounded-[15px]',
-              ctgry === activeCategory ? 'bg-white text-primary shadow-[0_4px_4px_0_rgba(0,0,0,0.05)] cursor-default pointer-events-none' : ''
+              ctgry === activeCategory
+                ? 'bg-white text-primary shadow-[0_4px_4px_0_rgba(0,0,0,0.05)] cursor-default pointer-events-none'
+                : ''
             )}
           >
             {ctgry}
