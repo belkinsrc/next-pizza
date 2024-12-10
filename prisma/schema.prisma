@@ -88,6 +88,39 @@ model Ingredient {
   cartItems CartItem[]
 }
 
+model CartItem {
+  id Int @id @default(autoincrement())
+
+  quantity Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  products Product[]
+
+  ingredients Ingredient[]
+
+  user User @relation(fields: [userId], references: [id])
+  userId Int
+
+  cart Cart @relation(fields: [cartId], references: [id])
+  cartId Int
+}
+
+model Cart {
+  id Int @id @default(autoincrement())
+
+  totalItems Int
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  items CartItem[]
+
+  user User?
+  userToken String
+}
+
 model Order {
   id Int @id @default(autoincrement())
 
@@ -100,37 +133,6 @@ model Order {
 
   user User @relation(fields: [userId], references: [id])
   userId Int
-}
-
-model CartItem {
-  id Int @id @default(autoincrement())
-
-  products Product[]
-
-  ingredients Ingredient[]
-
-  user User @relation(fields: [userId], references: [id])
-  userId Int
-
-  cart Cart @relation(fields: [cartId], references: [id])
-  cartId Int
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-}
-
-model Cart {
-  id Int @id @default(autoincrement())
-
-  totalItems Int
-
-  items CartItem[]
-
-  user User?
-  userToken String
-
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
 model VerificationCode {
