@@ -157,7 +157,7 @@ model Cart {
   items CartItem[]
 
   user User?
-  userToken String
+  userToken String @unique
 }
 
 model Order {
