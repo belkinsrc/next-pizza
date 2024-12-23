@@ -1,10 +1,9 @@
 import Image from 'next/image'
 import { cn } from '@/src/shared/utils/utils'
-import { Container } from '@/src/shared/ui/container'
 import logo from '@/public/images/logo.png'
-import { Input } from '@/src/shared/lib/input'
+import { Container, SearchInput } from '@/src/shared/ui'
 import { Button } from '@/src/shared/lib/button'
-import { Search, User, ShoppingCart, ArrowRight } from 'lucide-react'
+import { User, ShoppingCart, ArrowRight } from 'lucide-react'
 
 interface HeaderProps {
   className?: string
@@ -27,18 +26,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             вкуснее уже некуда
           </p>
         </div>
-        <div className="relative grow max-w-[764px]">
-          <Search
-            className="absolute left-[23px] top-1/2 translate-y-[-50%]"
-            size={16}
-            color="#ADADAD"
-          />
-          <Input
-            type="text"
-            placeholder="Поиск пиццы..."
-            className="px-12 py-[14px] h-[50px]"
-          />
-        </div>
+        <SearchInput />
         <div className="flex items-center gap-4">
           <Button variant={'outline'} className="flex items-center gap-[5px]">
             <User size={16} />
