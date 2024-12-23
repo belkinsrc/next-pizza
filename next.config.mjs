@@ -8,6 +8,12 @@ const nextConfig = {
         port: '',
         pathname: '/image/r:584x584/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'media.dodostatic.net',
+        port: '',
+        pathname: '/image/r:292x292/**',
+      },
     ],
   },
 };
