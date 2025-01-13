@@ -5,12 +5,22 @@ import { Title } from '@components/shared/ui/title'
 import { FilterCheckbox } from '@components/shared/ui'
 import { Input, Skeleton } from '@/src/shared/lib'
 import { useFilterIngredients } from '../../hooks'
+import { cn } from '@/src/shared/utils'
 
-function IngredientsFilter() {
-  const visibleItems = 6
+interface IngredientsFilterProps {
+  visibleItems: number
+  title: string
+  className?: string
+}
+
+function IngredientsFilter({
+  visibleItems,
+  title,
+  className,
+}: IngredientsFilterProps) {
   const [search, setSearch] = useState('')
   const [isAllVisible, setIsAllVisible] = useState(false)
-  const { ingredients, choosedIngredients, loading, toggle } =
+  const { ingredients, choosedIngredients, loading, toggleChoosedIngredient } =
     useFilterIngredients()
 
   const filteredIngredients = useMemo(() => {
@@ -33,9 +43,9 @@ function IngredientsFilter() {
     : ingredients.slice(0, visibleItems)
 
   return (
-    <div className="pb-[42px]">
+    <div className={cn(className, 'pb-[42px]')}>
       <Title
-        text="Ингредиенты:"
+        text={title}
         size="lg"
         className="mb-[15px] text-[16px] font-bold"
       />
@@ -64,9 +74,8 @@ function IngredientsFilter() {
                 key={id}
                 text={name}
                 value={name}
-                name={name}
                 checked={choosedIngredients.has(String(id))}
-                onCheckedChange={(id: string) => toggle(id)}
+                onCheckedChange={(id: string) => toggleChoosedIngredient(id)}
               />
             ))}
       </div>
