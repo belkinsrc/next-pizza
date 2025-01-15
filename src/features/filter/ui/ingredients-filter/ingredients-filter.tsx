@@ -1,11 +1,15 @@
 'use client'
 
-import { useState, useMemo } from 'react'
+import { forwardRef, useState, useMemo, useImperativeHandle } from 'react'
 import { Title } from '@components/shared/ui/title'
 import { FilterCheckbox } from '@components/shared/ui'
 import { Input, Skeleton } from '@/src/shared/lib'
 import { useFilterIngredients } from '../../hooks'
 import { cn } from '@/src/shared/utils'
+
+export type IngredientsFilterHandle = {
+  getState: () => Set<string>
+}
 
 interface IngredientsFilterProps {
   visibleItems: number
@@ -13,15 +17,22 @@ interface IngredientsFilterProps {
   className?: string
 }
 
-function IngredientsFilter({
-  visibleItems,
-  title,
-  className,
-}: IngredientsFilterProps) {
+const IngredientsFilter = forwardRef<
+  IngredientsFilterHandle,
+  IngredientsFilterProps
+>(({ visibleItems, title, className }, ref) => {
   const [search, setSearch] = useState('')
   const [isAllVisible, setIsAllVisible] = useState(false)
   const { ingredients, choosedIngredients, loading, toggleChoosedIngredient } =
     useFilterIngredients()
+
+  useImperativeHandle(ref, () => {
+    return {
+      getState() {
+        return choosedIngredients
+      },
+    }
+  }, [choosedIngredients])
 
   const filteredIngredients = useMemo(() => {
     if (search === '') return ingredients
@@ -43,7 +54,7 @@ function IngredientsFilter({
     : ingredients.slice(0, visibleItems)
 
   return (
-    <div className={cn(className, 'pb-[42px]')}>
+    <div className={cn(className)}>
       <Title
         text={title}
         size="lg"
@@ -88,6 +99,8 @@ function IngredientsFilter({
       )}
     </div>
   )
-}
+})
+
+IngredientsFilter.displayName = 'IngredientsFilter'
 
 export { IngredientsFilter }
