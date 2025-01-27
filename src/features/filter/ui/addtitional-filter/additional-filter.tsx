@@ -6,7 +6,7 @@ import { FilterCheckbox } from '@components/shared/ui'
 import { cn } from '@/src/shared/utils'
 
 export type AdditionalFilterHandle = {
-  getState: () => Set<string>
+  getState: () => string[]
 }
 
 interface AdditionalFilterProps {
@@ -29,7 +29,7 @@ const AdditionalFilter = forwardRef<
   useImperativeHandle(ref, () => {
     return {
       getState() {
-        return choosedAddtional
+        return Array.from(choosedAddtional)
       },
     }
   }, [choosedAddtional])
