@@ -8,7 +8,7 @@ import { useFilterIngredients } from '../../hooks'
 import { cn } from '@/src/shared/utils'
 
 export type IngredientsFilterHandle = {
-  getState: () => Set<string>
+  getState: () => string[]
 }
 
 interface IngredientsFilterProps {
@@ -29,7 +29,7 @@ const IngredientsFilter = forwardRef<
   useImperativeHandle(ref, () => {
     return {
       getState() {
-        return choosedIngredients
+        return Array.from(choosedIngredients)
       },
     }
   }, [choosedIngredients])
